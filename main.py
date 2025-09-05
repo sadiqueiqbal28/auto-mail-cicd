@@ -2,14 +2,11 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 def send_email(workflow_name, repo_name, workflow_run_id):
-    sender_email = os.getenv("SEN_MA")
-    receiver_email = os.getenv("REC_MA")
-    PSWD = os.getenv("APP_PASS")
+    sender_email = os.getenv("SENDER_EMAIL")
+    receiver_email = os.getenv("RECIEVER_EMAIL")
+    PSWD = os.getenv("APP_PASSWORD")
 
     subject = f"Workflow {workflow_name} failed for the repository {repo_name}"
 

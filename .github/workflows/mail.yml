@@ -1,0 +1,32 @@
+name: Send mail after workflow
+
+on:
+    workflow_dispatch:
+
+jobs:
+    send_mail:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v5
+
+            - name: "Setup Python Environment"
+              uses: actions/setup-python@v6
+              with:
+                python-version: '3.13'
+            
+            - name: Install dependencies
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+
+            - name: Execute python script to send Mail
+              run: python main.py
+              env:
+                WORKFLOW_NAME: ${{ github.workflow }}
+                REPO_NAME: ${{ github.repository }}
+                WORKFLOW_RUN_ID: ${{ github.run_id }}
+                APP_PASS: ${{ secrets.APP_PASSWORD }}
+                SEN_MA: ${{ secrets.SENDER_EMAIL }}
+                REC_MA: ${{ secrets.RECIEVER_MAIL }}
