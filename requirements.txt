@@ -1,3 +1,0 @@
-smtplib
-email
-os
