@@ -6,7 +6,7 @@ import os
 def send_email(workflow_name, repo_name, workflow_run_id):
     sender_email = os.getenv("SENDER_EMAIL")
     receiver_email = os.getenv("RECIEVER_EMAIL")
-    PSWD = os.getenv("APP_PASSWORD")
+    pswd = os.getenv("APP_PASSWORD")
 
     subject = f"Workflow {workflow_name} failed for the repository {repo_name}"
 
@@ -29,7 +29,7 @@ def send_email(workflow_name, repo_name, workflow_run_id):
 
     with smtplib.SMTP("smtp.gmail.com",587) as server:
         server.starttls()
-        server.login(sender_email,PSWD)
+        server.login(sender_email,pswd)
         server.sendmail(sender_email,receiver_email,message.as_string())
         print(f"Email sent successfully to {receiver_email}")
 
