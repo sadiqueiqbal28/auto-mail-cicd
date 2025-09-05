@@ -26,4 +26,4 @@ jobs:
                 WORKFLOW_RUN_ID: ${{ github.run_id }}
                 APP_PASS: ${{ secrets.APP_PASSWORD }}
                 SEN_MA: ${{ secrets.SENDER_EMAIL }}
-                REC_MA: ${{ secrets.RECIEVER_MAIL }}
+                REC_MA: ${{ secrets.RECIEVER_EMAIL }}

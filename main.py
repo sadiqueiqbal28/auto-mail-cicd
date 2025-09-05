@@ -12,7 +12,7 @@ def send_email(workflow_name, repo_name, workflow_run_id):
 
     message = MIMEMultipart()
     message["From"] = sender_email
-    message["To"] = receiver_email
+    message["To"] = receiver_email  
     message["Subject"] = subject
 
     body = f"""
