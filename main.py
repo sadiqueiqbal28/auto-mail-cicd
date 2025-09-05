@@ -8,7 +8,7 @@ def send_email(workflow_name, repo_name, workflow_run_id):
     receiver_email = os.getenv("RECIEVER_EMAIL")
     pswd = os.getenv("APP_PASSWORD")
 
-    subject = f"Workflow {workflow_name} failed for the repository {repo_name}"
+    subject = f"Workflow {workflow_name} success for the repository {repo_name}"
 
     message = MIMEMultipart()
     message["From"] = sender_email
@@ -16,14 +16,13 @@ def send_email(workflow_name, repo_name, workflow_run_id):
     message["Subject"] = subject
 
     body = f"""
-    Hey, the workflow {workflow_name} failed for the repository {repo_name}.
-    Kindly Check.
+Congratulations, {workflow_name} successfully executed for the repository {repo_name}.
 
-    More details:
-    Workflow ID: {workflow_run_id}.
+More details:
+Workflow ID: {workflow_run_id}.
 
-    This is a system generated mail don't reply to it.
-    """
+This is a system generated mail by Sadique's Ubuntu machine.
+"""
 
     message.attach(MIMEText(body,'plain'))
 
